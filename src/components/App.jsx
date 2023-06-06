@@ -8,7 +8,7 @@ export const App = () => {
   const [input, setInput] = useState('');
   const [images, setImages] = useState([]);
   const [status, setStatus] = useState('idle');
-  const [error, setError] = useState('');
+
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
@@ -18,10 +18,6 @@ export const App = () => {
         .then(images => {
           setImages(prevImages => [...prevImages, ...images.hits]);
           setStatus('resolved');
-        })
-        .catch(error => {
-          setError(error);
-          setStatus('rejected');
         });
   }, [input, pageNumber]);
 
